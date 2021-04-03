@@ -1,0 +1,29 @@
+<%- include('partials/header'); -%>
+
+<h3>Flight</h3>
+
+<table class="table">
+  <thead style="text-align: center">
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Carrier</th>
+      <th scope="col">Flight #</th>
+      <th scope="col">ETA</th>
+      <th scope="col">ETD</th>
+      <th scope="col">Notes</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th scope="row"><%= date %></th>
+      <td><%= carrier %></td>
+      <td><%= fltNo %></td>
+      <td><%= eta %></td>
+      <td><%= etd %></td>
+      <td><%= notes %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%- include('partials/footer'); -%>

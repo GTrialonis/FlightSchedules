@@ -1,0 +1,197 @@
+<%- include('partials/header'); -%>
+
+<h3><%=day%></h3>
+<!-- LISTING OF THE FLIGHTS -->
+
+<table class="table table-hover">
+  <thead style="text-align: center">
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Carrier</th>
+      <th scope="col">Flight #</th>
+      <th scope="col">ETA</th>
+      <th scope="col">ETD</th>
+      <th scope="col">Notes</th>
+    </tr>
+  </thead>
+  <% posts.forEach((post) => {%>
+  <tbody>
+    <tr>
+      <th scope="row"><%= post.date %></th>
+      <td><%= post.carrier %></td>
+      <td id="flight-number"><%= post.fltNo %></td>
+      <td><%= post.eta %></td>
+      <td><%= post.etd %></td>
+      <td id="notes"><%= post.notes %></td>
+      <td class="button">
+        <button
+          type="button"
+          class="btn btn-primary btn-xs"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
+          edit
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  <%});%>
+</table>
+
+<!-- Necessary Bootstrap scripts for the modal -->
+<script
+  data-require="jquery@*"
+  data-semver="2.2.0"
+  src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"
+></script>
+<script
+  data-require="bootstrap@*"
+  data-semver="3.3.6"
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+></script>
+<link
+  data-require="bootstrap-css@3.3.6"
+  data-semver="3.3.6"
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"
+/>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="myModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Edit Flight Information</h4>
+      </div>
+      <div class="modal-body">
+
+        <!-- The Form for Editing Flights -->
+
+        <div class="centered">
+          <form action="/edit" method="post">
+            <div class="form-group">
+              <table>
+                <tr>
+                  <td>
+                    <label>Filter:</label>
+                  </td>
+                  <td>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="postFilter"
+                      placeholder="enter filter, e.g. OA124"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Date:</label>
+                  </td>
+                  <td>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="postDate"
+                      placeholder="enter date as ddmmyy"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Carrier:</label>
+                  </td>
+                  <td>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="postCarrier"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Flight No.:</label>
+                  </td>
+                  <td>
+                    <input class="form-control" type="text" name="postFlight" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>ETA:</label>
+                  </td>
+                  <td>
+                    <input class="form-control" type="text" name="postETA" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>ETD:</label>
+                  </td>
+                  <td>
+                    <input class="form-control" type="text" name="postETD" />
+                  </td>
+                </tr>
+              </table>
+              <textarea
+                class="form-control"
+                name="postNotes"
+                cols="10"
+                rows="3"
+                placeholder="Take notes here"
+              ></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                Close
+              </button>
+              <button class="btn btn-primary" type="submit" name="button">
+                Udate
+              </button>
+          </form>
+        </div>
+        <!-- The end of the Form -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JQuery scripting for the modal -->
+  <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+    $(".modal-content").resizable({
+      //alsoResize: ".modal-dialog",
+      minHeight: 300,
+      minWidth: 300,
+    });
+    $(".modal-dialog").draggable();
+
+    $("#myModal").on("show.bs.modal", function () {
+      $(this).find(".modal-body").css({
+        "max-height": "100%",
+      });
+    });
+  </script>
+
+</div>
+<%- include('partials/footer'); -%>

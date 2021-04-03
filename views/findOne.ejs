@@ -1,0 +1,36 @@
+<%- include("partials/header"); -%>
+
+<div class="centered">
+  <p style="text-align: center"><%=findContent%></p>
+
+  <form action="/compose" method="post">
+    <div class="form-group">
+      <table>
+        <tr>
+          <td>
+            <label>Date:</label>
+          </td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="objDate"
+              placeholder="enter date as ddmmyy"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Flight No.:</label>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="objFlight" placeholder="e.g. OA365"/>
+          </td>
+        </tr>
+    </table>
+  </div>
+  <button class="btn btn-primary" type="submit" name="button">Find</button>
+</form>
+</div>
+
+<%- include("partials/footer"); -%>

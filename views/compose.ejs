@@ -1,0 +1,67 @@
+<%- include("partials/header"); -%>
+
+<div class="centered">
+  <p style="text-align: center"><%=composeContent%></p>
+
+  <form action="/compose" method="post">
+    <div class="form-group">
+      <table>
+        <tr>
+          <td>
+            <label>Date:</label>
+          </td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="postDate"
+              placeholder="enter date as ddmmyy"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Carrier:</label>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="postCarrier" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Flight No.:</label>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="postFlight" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>ETA:</label>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="postETA" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>ETD:</label>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="postETD" />
+          </td>
+        </tr>
+      </table>
+      <textarea
+        class="form-control"
+        name="postNotes"
+        cols="10"
+        rows="3"
+        placeholder="Take notes here"
+      ></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit" name="button">Save</button>
+  </form>
+</div>
+
+<%- include("partials/footer"); -%>
