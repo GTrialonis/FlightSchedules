@@ -140,6 +140,24 @@ app.get("/date/:dateId/fltNo/:fltNoId", (req, res) => {
   })
 });
 
+// ---------404 PAGES ---------------
+app.get("/archive/*", (req, res) => {
+  res.redirect("/*");
+});
+
+app.get("/d/*", (req, res) => {
+  res.redirect("/*");
+});
+
+app.get("/*", (req, res) => {
+  res.render("404", {
+    title: "404",
+    errorMessage: "Page not found"
+  });
+});
+
+
+
 app.listen(3000, (req, res) => {
   console.log("Server up on port 3000");
 });
